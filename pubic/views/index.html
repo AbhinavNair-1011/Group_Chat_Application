@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Chat Application</title>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <header>
+      <nav id="navTag">
+        <p>GROUP CHAT APPLICATION</p>
+        <ul>
+          <li class="login_register" id="login">Login</li>
+          <li class="login_register" id="register">Register</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form action="" id="registerForm" class="login_register">
+        <div class="label_inputWrap">
+          <label for="name">Name :</label>
+          <input type="text" id="name" />
+        </div>
+
+        <div class="label_inputWrap">
+          <label for="email">Email :</label>
+          <input type="email" id="email" autocomplete="off" />
+        </div>
+
+        <div class="label_inputWrap">
+          <label for="phoneNumber">PhoneNumber</label>
+          <input type="number" id="phoneNumber" />
+        </div>
+
+        <div class="label_inputWrap">
+          <label for="password">Password</label>
+          <input type="password" id="password" autocomplete="off" />
+        </div>
+
+        <div class="label_inputWrap" id="terms">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox" id="termsandcondition">Terms and Conditions</label>
+        </div>
+
+        <div class="label_inputWrap">
+          <button id="registerSubmitBtn">Register</button>
+        </div>
+      </form>
+
+      <form action="" id="loginForm" class="login_register"  style="display:none">
+        <div class="label_inputWrap">
+          <label for="loginEmail" id="loginEmail">Email :</label>
+          <input type="email" id="loginEmail" />
+        </div>
+
+        <div class="label_inputWrap">
+          <label for="loginPassword" id="loginPassword">Password :</label>
+          <input type="password" id="loginPassowrd" />
+        </div>
+        <div class="label_inputWrap" id="rememberMeWrap">
+            <input type="checkbox" id="checkbox" />
+            <label for="checkbox" id="rememberMe">Remeber Me</label>
+          </div>
+
+        <div class="label_inputWrap">
+          <button id="loginSubmitBtn">Login</button>
+        </div>
+      </form>
+    </main>
+    <script src="../js/index.js"></script>
+  </body>
+  </html>
