@@ -117,4 +117,13 @@ main .login_register div input {
   margin-bottom: -40px;
   margin-top: -40px;
   padding-right: 20px;
+}
+
+.valueRequired {
+  color: red;
+  font-size: 13px;
+  text-align: center;
+  margin-top: -26px;
+  width: 149px;
+  text-align: start;
 }/*# sourceMappingURL=index.css.map */
