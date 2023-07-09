@@ -27,22 +27,7 @@ const users = sequelize.define("user", {
   },
 });
 
-class Users {
-  constructor(name, email, phoneNumber, password) {
-    this.name = name;
-    this.email = email;
-    this.phoneNumber = phoneNumber;
-    this.password = password;
-    
-  }
-  async addUser() {
-    return await users.create({
-        name:this.name,
-        email:this.email,
-        phoneNumber:this.phoneNumber,
-        password:this.password
-    })
-  }
-}
 
-module.exports = { users, Users };
+
+
+module.exports = { users};

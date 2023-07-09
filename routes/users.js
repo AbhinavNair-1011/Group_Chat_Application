@@ -1,8 +1,10 @@
 const router=require("express").Router();
 const controller=require("../controllers/usersController");
-const bcryptEncryption=require("../middlewares/bcrypt_encryption")
+const {encryptUserPassword,validateUserPassword}=require("../middlewares/bcrypt");
+const {setJwt}=require("../middlewares/jwt");
 
-router.post("/api/add-user",bcryptEncryption,controller.addUser)
+router.post("/api/add-user",encryptUserPassword,controller.addUser)
+router.post("/api/validate-user",validateUserPassword,setJwt,controller.validateUser)
 
 
 module.exports=router;

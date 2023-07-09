@@ -113,10 +113,18 @@ main .login_register div input {
 #rememberMeWrap {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-around;
   margin-bottom: -40px;
   margin-top: -40px;
-  padding-right: 20px;
+}
+
+#signUp {
+  font-size: 15px;
+  color: blue;
+  border: 1.5px solid blue;
+  font-weight: bolder;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.774);
 }
 
 .valueRequired {
@@ -126,4 +134,9 @@ main .login_register div input {
   margin-top: -26px;
   width: 149px;
   text-align: start;
+}
+
+.valueRequired.login {
+  margin-top: -56px;
+  padding-left: 5px;
 }/*# sourceMappingURL=index.css.map */

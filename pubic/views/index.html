@@ -18,7 +18,7 @@
       </nav>
     </header>
     <main>
-      <form action="" id="registerForm" class="login_register">
+      <form action="" id="registerForm" class="login_register" style="display:none">
         <div class="label_inputWrap">
           <label for="name">Name :</label>
           <input type="text" id="name" />
@@ -49,19 +49,24 @@
         </div>
       </form>
 
-      <form action="" id="loginForm" class="login_register"  style="display:none">
+      <form action="" id="loginForm" class="login_register"  >
         <div class="label_inputWrap">
-          <label for="loginEmail" id="loginEmail">Email :</label>
+          <label for="loginEmail" id="loginEmailLabel">Email :</label>
           <input type="email" id="loginEmail" />
         </div>
 
         <div class="label_inputWrap">
-          <label for="loginPassword" id="loginPassword">Password :</label>
-          <input type="password" id="loginPassowrd" />
+          <label for="loginPassword" id="loginPasswordLabel">Password :</label>
+          <input type="password" id="loginPassword" />
         </div>
-        <div class="label_inputWrap" id="rememberMeWrap">
+        <div  id="rememberMeWrap">
+          <a href="" id="signUp">Sign Up</a>
+          <div class="label_inputWrap">
             <input type="checkbox" id="checkbox" />
             <label for="checkbox" id="rememberMe">Remeber Me</label>
+          </div>        
+            
+
           </div>
 
         <div class="label_inputWrap">
