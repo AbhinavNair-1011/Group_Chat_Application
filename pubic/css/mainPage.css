@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#grid-layout {
+  background: url("../images/White-paper-texture.jpg");
+  background-size: cover;
+  background-color: black;
+  display: grid;
+  grid-auto-flow: row;
+  height: 100vh;
+}
+
+#header {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  letter-spacing: 10px;
+}
+
+main {
+  height: 400px;
+}
+main div {
+  height: 100%;
+  width: 75%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+main div p {
+  margin: 2px;
+  padding: 7px;
+}
+main div form {
+  display: flex;
+}
+main div form #messageInput {
+  width: 80%;
+}
+main div form #messageSubmitBtn {
+  width: 18%;
+  height: 25px;
+  margin-left: 3px;
+}
+
+#footer {
+  background-color: black;
+  color: brown;
+  text-align: center;
+  padding-top: 10px;
+}/*# sourceMappingURL=mainPage.css.map */
