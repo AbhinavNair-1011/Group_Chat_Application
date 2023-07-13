@@ -9,6 +9,7 @@ async function validateUser(userDetails) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+ 
   let register = document.querySelector("#register");
   let login = document.querySelector("#login");
   let signUp = document.querySelector("#signUp");
@@ -30,6 +31,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let loginEmailInput = document.querySelector("#loginEmail");
   let loginPasswordInput = document.querySelector("#loginPassword");
+  let rememberMe=document.querySelector(".rememberMecheckbox");
+
 
   //register form
 
@@ -178,6 +181,7 @@ window.addEventListener("DOMContentLoaded", () => {
       for (let element of userInputCheck.enteredType) {
         for (let each of inputDivWrap) {
           if (each.children[1] === undefined) {
+
             continue;
           } else {
             if (each.children[1].attributes[1].value === element) {
@@ -195,6 +199,10 @@ window.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     let loginEmail = loginEmailInput.value;
     let loginPassword = loginPasswordInput.value;
+
+    
+    
+
 
     let userDetails = {
       email: loginEmail,
@@ -297,7 +305,20 @@ window.addEventListener("DOMContentLoaded", () => {
             
             
           }else{
-              //  window.location.href="../views/mainPage.html";
+              let token=res.data.t;
+             
+              
+              if(rememberMe.checked){
+                
+                localStorage.setItem("token",token)
+              }else{
+                sessionStorage.setItem("token",token)
+              }
+
+              window.location.href="../views/mainPage.html";
+
+           
+               
           }
        }
 

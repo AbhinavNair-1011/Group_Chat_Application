@@ -5,7 +5,6 @@ async function setJwt(req,res,next){
 if(req.userId){
 
     let userDetail=jwt.sign({userId:req.userId},"mysecretrizz");
-    console.log(userDetail)
     req.userDetail=userDetail;
     next();
 }else{
@@ -15,4 +14,22 @@ if(req.userId){
 
 }
 
-module.exports={setJwt};;
+async function validateToken(req,res,next){
+    try{
+
+        let token=req.headers.authorization;  
+    let result= jwt.verify(token,"mysecretrizz");    
+    req.userDetail=result;
+    next();
+
+    }catch(err){
+        if(err){
+            res.status(404).json("error")
+        }
+        next();
+    }
+    
+
+}
+
+module.exports={setJwt,validateToken};;

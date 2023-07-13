@@ -36,16 +36,14 @@ const addUser = async (req, res, next) => {
 async function validateUser(req, res, next) {
   if (req.userFound) {
     if (req.passwordMatched) {
-      return res
-        .status(200)
-        .cookie("token", req.userDetail, {
-          httpOnly: true,
-        })
-        .json({
+      
+
+      return res.status(200).json({
           userFound: req.userFound,
           passwordMatched: req.passwordMatched,
           message: req.message,
           status: req.status,
+          t:req.userDetail
         });
     } else {
       return res.status(200).json({
