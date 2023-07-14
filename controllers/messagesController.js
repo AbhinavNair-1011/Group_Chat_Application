@@ -31,6 +31,22 @@ if(err){
    
 }
 
-module.exports={sentMessage}
+const getMessages=async (req,res,next)=>{
+ 
+  let result = await messages.findAll();
+  let message=[];
+  for(let each of result){
+    message.push(each.dataValues.message)
+  }
+  
+
+  return res.status(200).json({
+status:"yes",
+messages:message
+
+  })
+}
+
+module.exports={sentMessage,getMessages}
 
 
