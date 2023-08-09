@@ -50,16 +50,31 @@ groupAdmin:req.userDetail.userId
 const addUserToGroup=async(req,res,nest)=>{
     
     let groupAdmin=req.userDetail.userId;
-    let userId=req.body.userId;
+    let phoneNumber=req.body.userPhoneNumber;
     let groupId=req.body.groupId;
     let groupName=req.body.gn;
+
     
     
 
         try{
-            let user=await users.findOne({where:{id:userId}})
-            let addedUserName=user.dataValues.name;
-            let socketId=user.dataValues.socketId;
+            let user=await users.findOne({where:{phoneNumber:phoneNumber}})
+            let addedUserName;
+            let socketId;
+            let userId;
+            if(user){
+            addedUserName=user.dataValues.name;
+
+               userId=user.dataValues.id; 
+               socketId=user.dataValues.socketId;
+            }else{
+                return res.status(404).json({
+                    status:"failed",
+                    message:"user not found"
+                })
+
+            }
+
 
             let checkUser=await userGroups.findAll({where:{userId:userId}});
             let flag=false;
@@ -107,7 +122,8 @@ const addUserToGroup=async(req,res,nest)=>{
             if(err){
                 console.log(err)
                 return res.status(404).json({
-                    status:"failed"
+                    status:"failed",
+                    err:err
                 })
             }
 

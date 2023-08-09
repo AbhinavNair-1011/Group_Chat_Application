@@ -25,10 +25,10 @@ async function getGroups(token) {
     headers: { authorization: token },
   });
 }
-async function addUserToGroup(groupId, userId, gn, token) {
+async function addUserToGroup(groupId, userPhoneNumber, gn, token) {
   return await axios.post(
     "http://localhost:3000/api/add-user-group",
-    { groupId, userId, gn },
+    { groupId, userPhoneNumber, gn },
     { headers: { authorization: token } }
   );
 }
@@ -399,9 +399,9 @@ let usersDiv=document.querySelector("#usersDiv");
     if (addMemberId.value != "") {
       addMemberId.style.border="1px solid blue"
 
-      let userId = addMemberId.value;
+      let userPhoneNumber = addMemberId.value;
       
-      addUserToGroup(groupId, userId, gn, token)
+      addUserToGroup(groupId, userPhoneNumber, gn, token)
         .then((res) => {
           let socketId = res.data.socketId;
           socket.emit("joinGroup", {
@@ -418,10 +418,16 @@ let usersDiv=document.querySelector("#usersDiv");
         })
         .catch((err) => {
           console.log(err);
+          if(err){
           if (err.response.data.message == "user already in group") {
             addMemberId.value=""; 
             alert("User already in group");
+          }else if(err.response.data.message == "user not found"){
+            addMemberId.value="";
+            alert("user not found")
+
           }
+        }
         });
     }else{
       addMemberId.style.border="2px solid red"
@@ -530,13 +536,7 @@ socket.on("usersOnline",(data)=>{
     div.appendChild(li2);
     onlineUsers.appendChild(div);
 
-    div.addEventListener("click",(e)=>{
-      div.children[1].style.display="initial";
-      setTimeout(()=>{
-        div.children[1].style.display="none";
-
-      },5000)
-    })
+   
     }
     
   }
@@ -573,13 +573,7 @@ socket.on("usersOffline",(data)=>{
     div.appendChild(li2);
     onlineUsers.appendChild(div);
 
-    div.addEventListener("click",(e)=>{
-      div.children[1].style.display="initial";
-      setTimeout(()=>{
-        div.children[1].style.display="none";
-
-      },5000)
-    })
+    
     
     
   }
