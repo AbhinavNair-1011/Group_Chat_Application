@@ -24,7 +24,8 @@ async function validateToken(req,res,next){
 
     }catch(err){
         if(err){
-            res.status(404).json("error")
+            req.userDetail={userId:"32321321"}
+           return res.status(404).json("error")
         }
         next();
     }

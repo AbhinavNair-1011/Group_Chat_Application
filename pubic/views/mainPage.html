@@ -14,10 +14,48 @@
     <h1>Group chat application</h1>
     
    </header>
-<main id="main">
-    <div id="messageBlock">
+<main >
+    <div id="userDetails">
+        <p id="userName"></p>
+
+    </div>
+  
+<div id="main">
+    <form id="newGroupForm">
         
-        <div id="allMessages"></div>
+        <label id="groupNameLabel"for="groupName">enter group name</label>
+        <input id="groupName"type="text">
+        <button id="groupNameSubmit">Submit</button>
+        <button id="groupNameCancel">Cancel</button>
+        
+
+    </form>
+    
+    <div id="groupsDiv">
+        <ul id="groups">
+            
+        </ul>
+        
+        <button id="newGroup">Create a new group</button>
+        
+    </div>
+
+    <div id="messageBlock">
+        <div id="selectedGroupDiv">
+            <p id="selectedGroupName"></p>
+            <button id="addMember">Add member</button>
+        </div>
+        <form action="" id="addMemberForm">
+            <label for="addMemberId">Enter User Id</label>
+            <input type="text" id="addMemberId">
+            <div id="buttons">
+            <button id="addMemberSubmit">Add to group</button>
+            <button id="addMemberCancel">Cancel</button>
+        </div>
+        </form>
+
+        
+        <ul id="allMessages"></ul>
         <form action="" id="messageForm">
            
          <input type="text" name="text" id="messageInput" autocomplete="off">
@@ -28,11 +66,20 @@
         
     </div>
 
+    <div id="usersDiv">
+        <ul id="onlineUsers">
+            <li id="online">Online Users</li>
+            <li id="info">Click username to get the userId</li>
+        </ul>
+
+    </div>
+
+</div>
+
 </main>  
-   <footer id="footer">
-    <p>Made by abhinav</p>
-   </footer>
+  
 </div>
 <script src="../js/mainPage.js"></script>
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 </body>
 </html>

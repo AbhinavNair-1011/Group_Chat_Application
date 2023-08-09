@@ -196,6 +196,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   loginSubmitBtn.addEventListener("click", async (e) => {
+
     e.preventDefault();
     let loginEmail = loginEmailInput.value;
     let loginPassword = loginPasswordInput.value;
@@ -307,12 +308,15 @@ window.addEventListener("DOMContentLoaded", () => {
           }else{
               let token=res.data.t;
              
+              console.log(res.data.t)
+              localStorage.setItem("token",token)
+
               
               if(rememberMe.checked){
                 
                 localStorage.setItem("token",token)
               }else{
-                sessionStorage.setItem("token",token)
+                localStorage.setItem("token",token)
               }
 
               window.location.href="../views/mainPage.html";

@@ -61,4 +61,40 @@ async function validateUser(req, res, next) {
     });
   }
 }
-module.exports = { addUser, validateUser };
+const userDetails=async (req,res,next)=>{
+
+  let userId=req.userDetail.userId;
+  let user= await users.findOne({where:{
+    id:userId
+  }});
+  if(user){
+    let userName= user.dataValues.name;
+    let userId=user.dataValues.id
+    return res.json({
+       status:"success",
+       userName:userName,
+       userId:userId
+    })
+
+  }else{
+    return res.status(404).json({
+      status:"failed"
+    })
+  }
+
+
+}
+const updateSocketId= async(req,res,next)=>{
+let userId=req.userDetail.userId;
+let socketId=req.body.socketId;
+
+let result = await users.update({
+  socketId:socketId
+},
+{where:{id:userId}})
+return res.json({
+  status:"updated"
+})
+}
+
+module.exports = { addUser, validateUser ,userDetails,updateSocketId};

@@ -1,5 +1,5 @@
 const { sequelize } = require("../database/connection");
-const { Sequelize } = require("sequelize");
+const { Sequelize, UUIDV4 } = require("sequelize");
 
 const users = sequelize.define("user", {
   id: {
@@ -25,6 +25,11 @@ const users = sequelize.define("user", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  socketId:{
+    type:Sequelize.UUID,
+    
+    allowNull:true
+  }
 });
 
 

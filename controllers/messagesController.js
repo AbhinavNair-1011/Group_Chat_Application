@@ -1,19 +1,31 @@
 const {messages}=require("../models/messages");
-const{users}=require("../models/users")
+const{users}=require("../models/users");
+const io=require("../app.js");
 
 
 const sentMessage= async (req,res,next)=>{
     let userId=req.userDetail.userId;
-    console.log(userId);
+    let socketId=req.body.socketId;
+    let message=req.body.message;
+    let groupId=req.body.groupId;
+  // io.to(socketId).emit("message",{message,})
+  
   try{
     let user=await users.findOne({where:{id:userId}})
 if(user){
+  
+  
     await messages.create({
-        message:req.body.message,
-        userId:userId
+        message:message,
+        userId:userId,
+        groupId:groupId,
+        userName:user.dataValues.name
+
     });
+   
     return res.status(200).json({
-        staus:"success"
+        staus:"success",
+        userName:user.dataValues.name
     });
 }else{
    return res.status(404).json({
@@ -25,6 +37,7 @@ if(user){
    
   }catch(err){
 if(err){
+  console.log(err)
     return res.status(404).json({err})
 }
   }
@@ -32,17 +45,26 @@ if(err){
 }
 
 const getMessages=async (req,res,next)=>{
- 
-  let result = await messages.findAll();
-  let message=[];
+
+  let groupId= req.params.groupId;
+  let result = await messages.findAll({
+    where:{groupId:groupId},    
+    order:[["createdAt","ASC"]]
+  });
+
+  let allMessages=[];
   for(let each of result){
-    message.push(each.dataValues.message)
+    let userMessage={};
+    userMessage.userName=each.dataValues.userName;
+    userMessage.userMessage=each.dataValues.message;
+    allMessages.push(userMessage);
   }
   
 
   return res.status(200).json({
 status:"yes",
-messages:message
+messages:allMessages,
+groupId:groupId
 
   })
 }

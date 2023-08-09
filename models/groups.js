@@ -1,21 +1,16 @@
 const {sequelize}=require("../database/connection");
 const Sequelize=require("sequelize");
 
-const messages=sequelize.define("message",{
+const groups= sequelize.define("group",{
     id:{
         type:Sequelize.UUID,
         defaultValue:Sequelize.UUIDV4,
         primaryKey:true
     },
-    message:{
-        type:Sequelize.STRING,
-        allowNull:false
-    },
-    userName:{
+    name:{
         type:Sequelize.STRING,
         allowNull:false
     }
-    
 });
+module.exports={groups}
 
-module.exports={messages};
